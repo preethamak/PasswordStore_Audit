@@ -11,7 +11,7 @@ contract PasswordStore {
     error PasswordStore__NotOwner();
 
     address private s_owner;
-    string private s_password;
+    string private s_password;          //not private
 
     event SetNewPassword();
 
@@ -32,7 +32,7 @@ contract PasswordStore {
      * @notice This allows only the owner to retrieve the password.
      * @param newPassword The new password to set.
      */
-    function getPassword() external view returns (string memory) {
+    function getPassword() external view returns (string memory) {      //no parameter passed
         if (msg.sender != s_owner) {
             revert PasswordStore__NotOwner();
         }
